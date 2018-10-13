@@ -1,11 +1,10 @@
 library(devtools)
-library(jsonlite)
 install_github("llamallamagirl/PowerTOST")
 
 proxy <- function(method, data) {
     result <- list
     for (o in list(data)) {
-      result <- c(list(get(method)(c(fromJSON(o))), result))
+      result <- c(list(get(method)(c(o)), result))
     }
     return(result)
 }
