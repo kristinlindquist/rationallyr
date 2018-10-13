@@ -1,7 +1,5 @@
 library(devtools)
 install_github("llamallamagirl/PowerTOST")
-library(PowerTOST)
-library(pwr)
 
 proxy <- function(method, data) {
     result <- list
