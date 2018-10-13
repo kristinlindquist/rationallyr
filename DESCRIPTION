@@ -1,0 +1,7 @@
+Package: RationallyR
+Type: Package
+Title: Wrapper around R methods used by Rationally
+Version: 0.0.1
+Date: 2018-10-03
+Imports: PowerTOST, pwr
+License: GPL (>=2)
