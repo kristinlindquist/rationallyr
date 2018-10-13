@@ -2,6 +2,6 @@ import (pwr)
 import (PowerTOST)
 
 export(
-    proxy,
+    proxy
 )
 
