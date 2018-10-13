@@ -1,4 +1,5 @@
-import PowerTOST
+import (pwr)
+import (PowerTOST)
 
 export(
     proxy,
