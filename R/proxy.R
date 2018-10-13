@@ -1,4 +1,5 @@
 library(devtools)
+library(jsonlite)
 install_github("llamallamagirl/PowerTOST")
 
 proxy <- function(method, data) {
