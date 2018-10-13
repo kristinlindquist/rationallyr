@@ -1,6 +1,6 @@
 import PowerTOST
 
 export(
-    power.noninf,
+    proxy,
 )
 
