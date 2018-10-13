@@ -5,7 +5,7 @@ library(PowerTOST)
 proxy <- function(method, data) {
     result <- list
     for (o in list(data)) {
-      result <- c(list(get(method)(c(o)), result))
+      result <- c(list(do.call(method, o), result))
     }
     return(result)
 }
