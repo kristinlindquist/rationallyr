@@ -6,9 +6,9 @@ proxy <- function(method, data) {
     result <- list
     result <- list(lapply(
       split(data, 1:nrow(data)),
-      function(r) c(docall(method, r))
+      function(r) unbox(docall(method, r))
     ), result)
-    return(unbox(unname(result)))
+    return(unname(result))
 }
 
 docall <- function(method, row) {
