@@ -9,7 +9,7 @@ proxy <- function(method, data) {
       split(data, 1:nrow(data)),
       function(r) c(docall(method, r))
     ), result)
-    return(unname(result))
+    return(unbox(unname(result)))
 }
 
 docall <- function(method, row) {
