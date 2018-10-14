@@ -14,5 +14,5 @@ proxy <- function(method, data) {
 
 docall <- function(method, row) {
   power <- do.call(method, row)
-  return(c(row, list(power=power)))
+  return(list(row, list(power=power)))
 }
