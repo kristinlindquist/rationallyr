@@ -13,5 +13,5 @@ proxy <- function(method, data) {
 }
 
 docall <- function(method, row) {
-  return c(data, do.call(method, row))
+  return c(list(data), do.call(method, row))
 }
