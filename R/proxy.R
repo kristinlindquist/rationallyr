@@ -3,11 +3,10 @@ library(jsonlite)
 install_github("llamallamagirl/PowerTOST")
 
 proxy <- function(method, data) {
-    result <- list
-    result <- list(lapply(
+    result <- lapply(
       split(data, 1:nrow(data)),
       function(r) unbox(docall(method, r))
-    ), result)
+    )
     return(unname(result))
 }
 
