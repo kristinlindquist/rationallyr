@@ -1,7 +1,7 @@
 import (pwr)
 import (PowerTOST)
 import (jsonlite)
-importFrom(doCall, R.utils)
+importFrom("R.utils", "doCall")
 
 export(
     proxy
