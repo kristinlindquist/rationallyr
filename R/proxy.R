@@ -1,10 +1,13 @@
 library(devtools)
 install_github("llamallamagirl/PowerTOST")
+install_github("renkun-ken/rlist")
+library(rlist)
 
-proxy <- function(data) {
+proxy <- function(method, data) {
     result <- list
-    for (o in list(data)) {
-      result <- c(list(do.call(o$method, o), result))
-    }
+    result <- lapply(
+      split(data, 1:nrow(data)),
+      function(r) do.call(method, r)
+    )
     return(result)
 }
