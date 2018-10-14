@@ -1,7 +1,6 @@
 library(devtools)
+library(jsonlite)
 install_github("llamallamagirl/PowerTOST")
-install_github("renkun-ken/rlist")
-library(rlist)
 
 proxy <- function(method, data) {
     result <- list
