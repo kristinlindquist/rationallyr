@@ -7,7 +7,11 @@ proxy <- function(method, data) {
     result <- list
     result <- lapply(
       split(data, 1:nrow(data)),
-      function(r) do.call(method, r)
+      function(r) docall(method, r)
     )
     return(result)
+}
+
+docall <- function(method, row) {
+  return c(data, do.call(method, row))
 }
