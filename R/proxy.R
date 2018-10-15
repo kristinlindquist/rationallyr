@@ -1,6 +1,7 @@
 library(jsonlite)
 library(PowerTOST)
 
+
 proxy <- function(method, data) {
     result <- lapply(
       split(data, 1:nrow(data)),
