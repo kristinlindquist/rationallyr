@@ -10,6 +10,11 @@ proxy <- function(method, data) {
 }
 
 docall <- function(method, row) {
-  row[["power"]] <- do.call(method, row)
+  power <- do.call(method, row)
+  if (typeof(power) == 'list' || typeof(power) == 'S4') {
+    row[["power"]] <- power.power
+  } else {
+    row[["power"]] <- do.call(method, row)
+  }
   return(row)
 }
