@@ -1,7 +1,8 @@
 library(jsonlite)
 library(PowerTOST)
 
-proxy <- function(array) {
+proxy <- function(array, ...) {
+    print(array)
     result <- lapply(
       split(array, 1:nrow(array)),
       function(r) unbox(docall(r$method, r))
