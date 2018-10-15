@@ -14,7 +14,7 @@ docall <- function(method, row) {
   if (typeof(power) == 'list' || typeof(power) == 'S4') {
     row[["power"]] <- power.power
   } else {
-    row[["power"]] <- do.call(method, row)
+    row[["power"]] <- typeof(power)
   }
   return(row)
 }
