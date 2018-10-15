@@ -11,7 +11,6 @@ proxy <- function(method, data) {
 }
 
 docall <- function(method, row) {
-  row[!grepl("method",unlist(row))]
   row[["power"]] <- do.call(method, row)
   return(row)
 }
