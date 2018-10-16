@@ -1,5 +1,6 @@
 library(jsonlite)
 library(PowerTOST)
+library(powerlmm)
 
 proxy <- function(method, data) {
     result <- lapply(
