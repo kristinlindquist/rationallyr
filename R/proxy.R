@@ -23,5 +23,5 @@ docall <- function(method, row) {
 
 powerlmmProxy <- function(params, data, ...) {
   p <- do.call("study_parameters", params)
-  return(proxy("get_power", data.frame(list(c(data, p = p)))))
+  return(proxy("get_power", data.frame(list(c(p, data)))))
 }
