@@ -2,6 +2,7 @@ library(jsonlite)
 library(PowerTOST)
 library(powerlmm)
 
+
 proxy <- function(method, data) {
     result <- lapply(
       split(data, 1:nrow(data)),
