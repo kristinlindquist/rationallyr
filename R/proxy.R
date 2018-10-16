@@ -2,7 +2,6 @@ library(jsonlite)
 library(PowerTOST)
 library(powerlmm)
 
-
 proxy <- function(method, data) {
     result <- lapply(
       split(data, 1:nrow(data)),
@@ -23,5 +22,5 @@ docall <- function(method, row) {
 
 powerlmmProxy <- function(params, data, ...) {
   studyParams <- do.call("study_parameters", params)
-  return(proxy("get_power", data.frame(list(c(studyParams, data)))))
+  return(do.call("get_power", c(studyParams, data)))
 }
