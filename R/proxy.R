@@ -18,3 +18,7 @@ docall <- function(method, row) {
   }
   return(row)
 }
+
+powerlmmProxy <- function(method, data) {
+  return(proxy("get_power", c(data.data, proxy("study_parameters", data.params))))
+}
