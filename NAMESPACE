@@ -2,6 +2,7 @@ import (pwr)
 import (PowerTOST)
 import (jsonlite)
 import (powerlmm)
+import (clusterPower)
 
 export(
     proxy
