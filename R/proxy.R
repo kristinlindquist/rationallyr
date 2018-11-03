@@ -1,9 +1,16 @@
 proxy <- function(method, data) {
     result <- lapply(
       split(data, 1:nrow(data)),
-      function(r) unbox(docall(method, r))
+      function(r) unbox(docall(method, parseFun(r)))
     )
     return(unname(result))
+}
+
+parseFun <- function(r) {
+  for (key in names(r)) {
+    if (grepl("function", key)) r[key] = parse(text = r[key])
+  }
+  return(r)
 }
 
 docall <- function(method, row) {
