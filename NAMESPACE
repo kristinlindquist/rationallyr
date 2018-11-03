@@ -5,6 +5,7 @@ import (powerlmm)
 import (clusterPower)
 
 export(
-    proxy
+    proxy,
+    parseFun
 )
 
