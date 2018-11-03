@@ -17,6 +17,7 @@ parseFun <- function(r) {
 
 docall <- function(method, row) {
   power <- do.call(method, parseFun(row))
+  print(power)
   if (typeof(power) == 'list' || typeof(power) == 'S4') {
     row[["power"]] <- power$power
   } else {
@@ -26,6 +27,6 @@ docall <- function(method, row) {
 }
 
 powerlmmProxy <- function(...) {
-  studyParams <- do.call("study_parameters", as.list(match.call()))
+  studyParams <- do.call("study_parameters", as.list(match.call()[-1]))
   return(do.call("get_power", list(studyParams)))
 }
