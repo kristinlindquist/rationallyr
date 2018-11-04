@@ -9,15 +9,15 @@ proxy <- function(method, data) {
 parseFun <- function(r) {
   for (key in names(r)) {
     if (grepl("function", key)) {
-      r[key] = parse(text = r[key])
+      r[key] = parse(text = r[[key]])
     }
   }
   return(r)
 }
 
 docall <- function(method, row) {
-  power <- do.call(method, parseFun(row))
-  print(power)
+  newRow <- parseFun(row)
+  power <- do.call(method, newRow)
   if (typeof(power) == 'list' || typeof(power) == 'S4') {
     row[["power"]] <- power$power
   } else {
