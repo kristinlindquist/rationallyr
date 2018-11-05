@@ -8,7 +8,9 @@ proxy <- function(method, data) {
 
 parseFun <- function(r) {
   for (key in names(r)) {
-    if (r[[key]] == 'fixed.effect') {
+    if (is.na(r[[key]])) {
+      next
+    } else if (r[[key]] == 'fixed.effect') {
       r[key] = alist(fixed.effect)
     } else if (r[[key]] == 'random.effect') {
       r[key] = alist(random.effect)
