@@ -8,8 +8,14 @@ proxy <- function(method, data) {
 
 parseFun <- function(r) {
   for (key in names(r)) {
-    if (grepl("function", key)) {
-      r[key] = parse(text = r[[key]])
+    if (r[[key]] == 'fixed.effect') {
+      r[key] = alist(fixed.effect)
+    } else if (r[[key]] == 'random.effect') {
+      r[key] = alist(random.effect)
+    } else if (r[[key]] == 'weighted.crossover.cluster.level') {
+      r[key] = alist(weighted.crossover.cluster.level)
+    } else if (r[[key]] == 'fixed.effect.cluster.level') {
+      r[key] = alist(fixed.effect.cluster.level)
     }
   }
   return(r)
