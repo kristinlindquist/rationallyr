@@ -3,6 +3,7 @@ import (PowerTOST)
 import (jsonlite)
 import (powerlmm)
 import (clusterPower)
+import (rddapp)
 
 export(
     proxy,
