@@ -41,15 +41,19 @@ powerlmmProxy <- function(...) {
 
 retro_gelman <- function(dTrue, dObserved, n, n2=0, alpha=0.05, df=Inf, n.sims=10000) {
   sed <- sqrt((n+n2)/(n*n2)+(dObserved^2)/(2*(n+n2)));
-  gelman(dTrue, sed, alpha, df, n.sims);
+  gelman(dTrue, sed, alpha=alpha, df=df, n.sims=n.sims);
 }
 
 prospective_gelman <- function(d, n, n2=0, alpha=0.05, df=Inf, n.sims=10000) {
+  if (n2 == 0) {
+    n2 = n / 2;
+    n = n2;
+  }
   sed <- sqrt((n+n2)/(n*n2)+(d^2)/(2*(n+n2)));
-  gelman(d, sed, alpha, df, n.sims);
+  gelman(d, sed, alpha=alpha, df=df, n.sims=n.sims);
 }
 
-gelman <- function(A, s, alpha=.05, df=Inf, n.sims=10000){
+gelman <- function(A, s, alpha=0.05, df=Inf, n.sims=10000){
   z <- qt(1-alpha/2, df)
   p.hi <- 1 - pt(z-A/s, df)
   p.lo <- pt(-z-A/s, df)
