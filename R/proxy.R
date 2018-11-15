@@ -23,12 +23,21 @@ parseFun <- function(r) {
   return(r)
 }
 
+maybeUnbox <- function(x) {
+  if(!is.null(x) && (is.atomic(x) || is.data.frame(x))  && length(dim(x)) < 2) {
+    return(unbox(x))
+  } else if (!is.null(x) && length(x) == 1) {
+    return(x[[1]])
+  }
+  return(x)
+}
+
 docall <- function(method, row) {
   newRow <- parseFun(row)
   power <- do.call(method, newRow)
   if (typeof(power) == 'list' || typeof(power) == 'S4') {
     for (key in names(power)) {
-      row[[key]] = power[key]
+      row[[key]] = maybeUnbox(power[key])
     }
   } else {
     row[["power"]] <- power
