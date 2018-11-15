@@ -39,7 +39,17 @@ powerlmmProxy <- function(...) {
   return(do.call("get_power", list(studyParams)))
 }
 
-retrodesign <- function(A, s, alpha=.05, df=Inf, n.sims=10000){
+retro_gelman <- function(dTrue, dObserved, n, n2=0, alpha=0.05, df=Inf, n.sims=10000) {
+  sed <- sqrt((n+n2)/(n*n2)+(dObserved^2)/(2*(n+n2)));
+  retrodesign(dTrue, sed, alpha, df, n.sims);
+}
+
+prospective_gelman <- function(d, n, n2=0, alpha=0.05, df=Inf, n.sims=10000) {
+  sed <- sqrt((n+n2)/(n*n2)+(d^2)/(2*(n+n2)));
+  retrodesign(d, sed, alpha, df, n.sims);
+}
+
+gelman <- function(A, s, alpha=.05, df=Inf, n.sims=10000){
   z <- qt(1-alpha/2, df)
   p.hi <- 1 - pt(z-A/s, df)
   p.lo <- pt(-z-A/s, df)
