@@ -37,7 +37,7 @@ docall <- function(method, row) {
   power <- do.call(method, newRow)
   if (typeof(power) == 'list' || typeof(power) == 'S4') {
     for (key in names(power)) {
-      row[[key]] = maybeUnbox(power[key])
+      row[[key]] = if(is.null(row[[key]])) maybeUnbox(power[key]) else row[[key]]
     }
   } else {
     row[["power"]] <- power
