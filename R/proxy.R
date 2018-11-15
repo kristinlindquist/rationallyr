@@ -26,7 +26,7 @@ parseFun <- function(r) {
 maybeUnbox <- function(x) {
   if(!is.null(x) && (is.atomic(x) || is.data.frame(x))  && length(dim(x)) < 2) {
     return(unbox(x))
-  } else if (!is.null(x) && length(x) == 1) {
+  } else if (!is.null(x) && length(x) == 1 && length(x[[1]]) < 2) {
     return(x[[1]])
   }
   return(x)
