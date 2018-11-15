@@ -3,9 +3,6 @@ proxy <- function(method, data) {
       split(data, 1:nrow(data)),
       function(r) docall(method, r)
     )
-    if(!is.null(result) && is.atomic(result) && length(dim(result)) < 2) {
-      result = unbox(result)
-    }
     return(unname(result))
 }
 
@@ -35,6 +32,9 @@ docall <- function(method, row) {
     }
   } else {
     row[["power"]] <- power
+  }
+  if(!is.null(row) && is.atomic(row) && length(dim(row)) < 2) {
+    row = unbox(row)
   }
   return(row)
 }
