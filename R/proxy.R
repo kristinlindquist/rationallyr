@@ -27,7 +27,7 @@ docall <- function(method, row) {
   newRow <- parseFun(row)
   power <- do.call(method, newRow)
   if (typeof(power) == 'list' || typeof(power) == 'S4') {
-    row = c(row, power)
+    row[["power"]] <- power$power
   } else {
     row[["power"]] <- power
   }
