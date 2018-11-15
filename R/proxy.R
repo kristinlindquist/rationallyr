@@ -28,7 +28,7 @@ docall <- function(method, row) {
   power <- do.call(method, newRow)
   if (typeof(power) == 'list' || typeof(power) == 'S4') {
     for (key in names(power)) {
-      row[key] = power[key]
+      row[[key]] = power[key]
     }
   } else {
     row[["power"]] <- power
