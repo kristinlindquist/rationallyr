@@ -1,7 +1,7 @@
 proxy <- function(method, data) {
     result <- lapply(
       split(data, 1:nrow(data)),
-      function(r) docall(method, r)
+      function(r) unbox(docall(method, r))
     )
     return(unname(result))
 }
@@ -32,9 +32,6 @@ docall <- function(method, row) {
     }
   } else {
     row[["power"]] <- power
-  }
-  if(!is.null(row) && is.atomic(row) && length(dim(row)) < 2) {
-    row = unbox(row)
   }
   return(row)
 }
