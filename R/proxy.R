@@ -1,8 +1,11 @@
 proxy <- function(method, data) {
     result <- lapply(
       split(data, 1:nrow(data)),
-      function(r) unbox(docall(method, r))
+      function(r) docall(method, r)
     )
+    if(!is.null(result) && is.atomic(result) && length(dim(result)) < 2) {
+      result = unbox(result)
+    }
     return(unname(result))
 }
 
@@ -27,7 +30,9 @@ docall <- function(method, row) {
   newRow <- parseFun(row)
   power <- do.call(method, newRow)
   if (typeof(power) == 'list' || typeof(power) == 'S4') {
-    row = c(row, power)
+    for (key in names(power)) {
+      row[key] = power[key]
+    }
   } else {
     row[["power"]] <- power
   }
