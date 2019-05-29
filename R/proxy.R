@@ -63,5 +63,5 @@ retrodesign <- function(A, s, alpha=0.05, df=Inf, n.sims=10000){
   estimate <- A + s*rt(n.sims,df)
   significant <- abs(estimate) > s*z
   exaggeration <- mean(abs(estimate)[significant])/A
-  return(list(power=power, typeS=typeS, exaggeration=exaggeration, dRep=estimate))
+  return(list(power=power, typeS=typeS, exaggeration=exaggeration, dRep=mean(estimate)))
 }
