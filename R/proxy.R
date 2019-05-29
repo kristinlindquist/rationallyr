@@ -50,11 +50,11 @@ powerlmmProxy <- function(...) {
   return(do.call("get_power", list(studyParams)))
 }
 
-prospective_gelman <- function(d, se, alpha=0.05, df=Inf, n.sims=10000) {
-  gelman(d, se, alpha=alpha, df=df, n.sims=n.sims);
+gelman <- function(d, se, alpha=0.05, df=Inf, n.sims=10000) {
+  retrodesign(d, se, alpha=alpha, df=df, n.sims=n.sims);
 }
 
-gelman <- function(A, s, alpha=0.05, df=Inf, n.sims=10000){
+retrodesign <- function(A, s, alpha=0.05, df=Inf, n.sims=10000){
   z <- qt(1-alpha/2, df)
   p.hi <- 1 - pt(z-A/s, df)
   p.lo <- pt(-z-A/s, df)
@@ -63,5 +63,5 @@ gelman <- function(A, s, alpha=0.05, df=Inf, n.sims=10000){
   estimate <- A + s*rt(n.sims,df)
   significant <- abs(estimate) > s*z
   exaggeration <- mean(abs(estimate)[significant])/A
-  return(list(power=power, typeS=typeS, exaggeration=exaggeration))
+  return(list(power=power, typeS=typeS, exaggeration=exaggeration, dRep=estimate))
 }
