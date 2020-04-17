@@ -4,6 +4,7 @@ import (jsonlite)
 import (powerlmm)
 import (clusterPower)
 import (rddapp)
+import (powerSurvEpi)
 
 export(
     proxy,
