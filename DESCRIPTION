@@ -1,7 +1,7 @@
 Package: RationallyR
 Type: Package
 Title: Wrapper around R methods used by Rationally
-Version: 0.0.5
+Version: 0.0.6
 Date: 2018-10-03
 Imports: pwr, powerlmm
 License: GPL (>=2)
